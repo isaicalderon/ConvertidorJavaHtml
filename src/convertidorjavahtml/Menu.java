@@ -16,6 +16,7 @@ import javax.swing.text.TabStop;
  *
  * @author kirk
  */
+
 public class Menu extends javax.swing.JFrame {
     Analizador analizador;
     StyleContext sc;
@@ -24,7 +25,7 @@ public class Menu extends javax.swing.JFrame {
     
     public Menu() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        //this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         analizador = new Analizador();
         
@@ -74,12 +75,9 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listaLineas1 = new javax.swing.JTextPane();
         jScrollPane6 = new javax.swing.JScrollPane();
         editor1 = new javax.swing.JTextPane();
         scrollEditor1 = new javax.swing.JScrollBar();
-        scrollLineas1 = new javax.swing.JScrollBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -98,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(40, 41, 35)));
         jScrollPane2.setForeground(new java.awt.Color(40, 41, 35));
         jScrollPane2.setHorizontalScrollBar(null);
+        jScrollPane2.setVerticalScrollBar(scrollLineas);
 
         listaLineas.setEditable(false);
         listaLineas.setBackground(new java.awt.Color(40, 41, 35));
@@ -112,6 +111,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(40, 41, 35)));
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane5.setHorizontalScrollBar(null);
+        jScrollPane5.setVerticalScrollBar(scrollEditor);
 
         editor.setBackground(new java.awt.Color(40, 41, 35));
         editor.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
@@ -164,20 +164,20 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
+            .addGap(0, 663, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -189,23 +189,10 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel12.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(40, 41, 35)));
-        jScrollPane3.setForeground(new java.awt.Color(40, 41, 35));
-        jScrollPane3.setHorizontalScrollBar(null);
-
-        listaLineas1.setEditable(false);
-        listaLineas1.setBackground(new java.awt.Color(40, 41, 35));
-        listaLineas1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        listaLineas1.setForeground(new java.awt.Color(255, 255, 255));
-        listaLineas1.setPreferredSize(new java.awt.Dimension(35, 6));
-        listaLineas1.setRequestFocusEnabled(false);
-        jScrollPane3.setViewportView(listaLineas1);
-
-        jPanel12.add(jScrollPane3, java.awt.BorderLayout.WEST);
-
         jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(40, 41, 35)));
         jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane6.setHorizontalScrollBar(null);
+        jScrollPane6.setVerticalScrollBar(scrollEditor1);
 
         editor1.setBackground(new java.awt.Color(40, 41, 35));
         editor1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 14)); // NOI18N
@@ -239,34 +226,26 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel12.add(scrollEditor1, java.awt.BorderLayout.LINE_END);
 
-        scrollLineas1.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
-        scrollLineas1.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
-            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
-                scrollLineas1AdjustmentValueChanged(evt);
-            }
-        });
-        jPanel12.add(scrollLineas1, java.awt.BorderLayout.PAGE_END);
-
         jPanel5.add(jPanel12);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
+            .addGap(0, 663, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -350,10 +329,6 @@ public class Menu extends javax.swing.JFrame {
     private void scrollEditor1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_scrollEditor1AdjustmentValueChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_scrollEditor1AdjustmentValueChanged
-
-    private void scrollLineas1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_scrollLineas1AdjustmentValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scrollLineas1AdjustmentValueChanged
 
     private void editorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_editorPropertyChange
         System.out.println("El valor a cambiado: "+evt.getPropertyName());
@@ -486,14 +461,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextPane listaLineas;
-    private javax.swing.JTextPane listaLineas1;
     private javax.swing.JScrollBar scrollEditor;
     private javax.swing.JScrollBar scrollEditor1;
     private javax.swing.JScrollBar scrollLineas;
-    private javax.swing.JScrollBar scrollLineas1;
     // End of variables declaration//GEN-END:variables
 }

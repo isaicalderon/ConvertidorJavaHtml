@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 public class Analizador {
     String[] pr = new String[50];
+    String[] var = new String[8];
+    
     String pr1 = "<span cla-ss='pr'>";
     String pr2 = "</span>";
     
@@ -83,14 +85,28 @@ public class Analizador {
 	this.pr[47] = "void";
 	this.pr[48] = "volatile";
 	this.pr[49] = "while";
+        
+        this.var[0] = "String";
+        this.var[1] = "int";
+        this.var[2] = "Integer";
+        this.var[3] = "Double";
+        this.var[4] = "double";
+        this.var[5] = "return";
+        this.var[6] = "+";
+        this.var[7] = "Date";
+        //this.var[8] = "=";
+        
     }
     
     public String analizar(String text){
-        text = text.replace("\n", " <br> ");
+        text = text.replace("\n", " <br/> ");
         text = text.replace("\t", " TAB ");
         String[] tmp = text.split(" ");
         String value = "";
+        String value2 = "";
+        
         boolean var = false;
+        boolean thisOption = false;
         
         for (int i = 0; i < tmp.length; i++) {
             System.out.println("Analizando: "+tmp[i]);
@@ -111,12 +127,42 @@ public class Analizador {
                     //System.out.println("buscando: "+value+" status: "+ m.find());
                     text = text.replace(value+";", "<span cla-ss='var'>"+value+"</span>;");
                     var = false;
+                    value = "";
                 }
-                if (tmp[i].equals("String")) {
-                    System.out.println("asdfghsa");
+                if (buscarVar(tmp[i])) {
+                    //System.out.println("asdfghsa");
                     var = true;
                 }
                 
+                for (int j = 0; j < tmp[i].length(); j++) { // evaluamos un this
+                    value2+=tmp[i].charAt(j);
+                    System.out.println(value2);
+                    if (j == 4) {
+                        if (value2.equals("this.")) {
+                            System.out.println("Encontrado un this...");
+                            thisOption = true;
+                            value2 = "";
+                        }
+                    }
+                }
+                if (thisOption) {
+                    System.out.println("var encontrada: "+value2);
+                    text = text.replace(tmp[i], "<span cla-ss='pr'>this</span>."+"<span cla-ss='var'>"+value2+"</span>");
+                    thisOption = false;
+                }
+                value2 = "";
+                /*
+                for (int j = 0; j < tmp[i].length(); j++) { // evaluamos si es un cometario
+                    value2+=tmp[i].charAt(j);
+                    if (j == 1) {
+                        if (value2.equals("//")) {
+                            System.out.println("comentario encontrado");
+                            text = text.replace(tmp[i], "<span cla-ss='com'>"+tmp[i]+"</span>");
+                        }
+                    }
+                }
+                value2 = ""; 
+                */
                 //System.out.println("no soy PR soy "+tmp[i]);
                 
                 /*
@@ -172,6 +218,15 @@ public class Analizador {
     public boolean buscarPalabraReservada(String palabra){
         for (String pr: pr){
             if (pr.equals(palabra)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean buscarVar(String value){
+        for(String tmp : var){
+            if (tmp.equals(value)) {
                 return true;
             }
         }
